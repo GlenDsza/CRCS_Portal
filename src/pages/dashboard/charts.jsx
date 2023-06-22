@@ -1,6 +1,7 @@
 import {
     Card,
     CardBody,
+    Radio,
 } from "@material-tailwind/react";
 import "ag-grid-community/styles/ag-grid.css"; // Core grid CSS, always needed
 import "ag-grid-community/styles/ag-theme-alpine.css"; // Optional theme CSS
@@ -27,7 +28,7 @@ export function Charts() {
         case 'year':
             defaultChartType = 'line';
             chartData = regiYearCount;
-            chartColor="#3ca0f2"
+            chartColor="#60b664"
             break;
         case 'state':
             defaultChartType = 'pie';
@@ -37,7 +38,7 @@ export function Charts() {
         case 'sector':
             defaultChartType = 'bar';
             chartData = sectoralCount;
-            chartColor = "#60b664";
+            chartColor = "#3ca0f2";
             break;
         case 'month':
             defaultChartType = 'hBar';
@@ -56,6 +57,7 @@ export function Charts() {
             break;
         case 'bar':
             chartVar = createBarChart(chartData);
+            chartVar.chart.options.xaxis.categories = Object.keys(chartData);
             break;
         case 'hBar':
             chartVar = createHorBarChart(chartData);
@@ -77,7 +79,7 @@ export function Charts() {
                 </Card>
                 <Card className={chartType == 'bar' ? "block" : "hidden"}>
                     <CardBody style={{backgroundColor: chartType=='pie'?'white':chartColor, borderRadius: 10}} className=" p-5" variant="gradient">
-                        <Chart {...chartVar.chart} />
+                        <Chart {...chartVar.chart } />
                     </CardBody>
                 </Card>
                 <Card className={chartType == 'hBar' ? "block" : "hidden"}>
@@ -86,15 +88,18 @@ export function Charts() {
                     </CardBody>
                 </Card>
             </div>
-            {/* <div className=" mt-3 mb-12 flex gap-10 justify-center ">
+            <div className=" mt-3 mb-12 flex gap-10 justify-center ">
                 <Radio
                     id="line"
                     name="type"
                     label="Line Chart"
                     ripple={true}
-                    onClick={()=>setChartType('line')}
+                    onChange={()=>{}}
+                    onClick={()=>{setChartType('line')}}
                     checked = {chartType=='line'?true:false}
                 />
+                
+                {title != 'year' ? <>
                 <Radio
                     id="pie"
                     name="type"
@@ -118,8 +123,9 @@ export function Charts() {
                     ripple={true}
                     onClick={()=>setChartType('hBar')}
                     checked = {chartType=='hBar'?true:false}
-                />
-            </div> */}
+                /></> : <></>}
+                
+            </div>
         </div>
     );
 

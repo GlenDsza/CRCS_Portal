@@ -6,21 +6,14 @@ import {
   monthCount,
 } from "./og-data";
 import randomColor from "randomcolor";
+
 const yearCountChart = {
   type: "line",
   height: 280,
   series: [
     {
       name: "Registration Year",
-      data: [
-        regiYearCount[16],
-        regiYearCount[17],
-        regiYearCount[18],
-        regiYearCount[19],
-        regiYearCount[20],
-        regiYearCount[21],
-        regiYearCount[22],
-      ],
+      data: Object.values(regiYearCount),
     },
   ],
   options: {
@@ -34,7 +27,7 @@ const yearCountChart = {
     },
     xaxis: {
       ...chartsConfig.xaxis,
-      categories: ["2016", "2017", "2018", "2019", "2020", "2021", "2022"],
+      categories: Object.keys(regiYearCount),
     },
   },
 };
@@ -96,20 +89,7 @@ const sectoralCountChart = {
   series: [
     {
       name: "Sectoral Count",
-      data: [
-        sectoralCount.Agro,
-        sectoralCount.Bank,
-        sectoralCount.Construction,
-        sectoralCount.Credit,
-        sectoralCount.Dairy,
-        sectoralCount.Federation,
-        sectoralCount.Fisheries,
-        sectoralCount.Health,
-        sectoralCount.Housing,
-        sectoralCount.Marketing,
-        sectoralCount.Textile,
-        sectoralCount.Others,
-      ],
+      data: Object.values(sectoralCount),
     },
   ],
   options: {
@@ -131,20 +111,7 @@ const sectoralCountChart = {
     xaxis: {
       ...chartsConfig.xaxis,
       labels: { style: { fontSize: 10, colors: "white" } },
-      categories: [
-        "Agro",
-        "Bank",
-        "Construction",
-        "Credit",
-        "Dairy",
-        "Federation",
-        "Fisheries",
-        "Health",
-        "Housing",
-        "Marketing",
-        "Textile",
-        "Others",
-      ],
+      categories: Object.keys(sectoralCount),
     },
     annotations: {
       points: Object.keys(sectoralCount).map((key) => ({
@@ -176,20 +143,7 @@ const monthCountChart = {
   series: [
     {
       name: "Month Count",
-      data: [
-        monthCount.January,
-        monthCount.Febuary,
-        monthCount.March,
-        monthCount.April,
-        monthCount.May,
-        monthCount.June,
-        monthCount.July,
-        monthCount.August,
-        monthCount.September,
-        monthCount.October,
-        monthCount.November,
-        monthCount.December,
-      ],
+      data: Object.values(monthCount),
     },
   ],
   options: {
@@ -211,20 +165,7 @@ const monthCountChart = {
     xaxis: {
       ...chartsConfig.xaxis,
       labels: { style: { fontSize: 10, colors: "white" } },
-      categories: [
-        "January",
-        "Febuary",
-        "March",
-        "April",
-        "May",
-        "June",
-        "July",
-        "August",
-        "September",
-        "October",
-        "November",
-        "December",
-      ],
+      categories: Object.keys(monthCount),
     },
     annotations: {
       points: Object.keys(monthCount).map((key) => ({
@@ -252,12 +193,12 @@ const monthCountChart = {
 };
 
 export const statisticsChartsData = [
-  {
+   {
     color: "blue",
-    title: "Year-wise Distribution",
-    description: "No. of societies registered in a particular year",
+    title: "Sector-wise Distribution",
+    description: "No. of societies registered under particular sector",
     footer: "Last updated on DD-MM-YYYY",
-    chart: yearCountChart,
+    chart: sectoralCountChart,
   },
   {
     color: "white",
@@ -266,20 +207,22 @@ export const statisticsChartsData = [
     footer: "Last updated on DD-MM-YYYY",
     chart: stateChart,
   },
-  {
+    {
     color: "green",
-    title: "Sector-wise Distribution",
-    description: "No. of societies registered under particular sector",
+    title: "Year-wise Distribution",
+    description: "No. of societies registered in a particular year",
     footer: "Last updated on DD-MM-YYYY",
-    chart: sectoralCountChart,
+    chart: yearCountChart,
   },
-  {
+   {
     color: "orange",
     title: "Month-wise Distribution (2022)",
     description: "No. of societies registered per month last Year",
     footer: "Last updated on DD-MM-YYYY",
     chart: monthCountChart,
   },
+
+
 ];
 
 export default statisticsChartsData;

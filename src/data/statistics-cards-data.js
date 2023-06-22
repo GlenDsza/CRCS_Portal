@@ -8,8 +8,8 @@ import {
 import { data, regiYearCount, sectoralCount, stateCount } from "./og-data";
 
 var diffChangeInYearPer =
-  ((regiYearCount[22] - regiYearCount[21]) / regiYearCount[21]) * 100;
-var totalTillPrevYear = data.length - regiYearCount[22];
+  ((regiYearCount["2022"] - regiYearCount["2021"]) / regiYearCount["2021"]) * 100;
+var totalTillPrevYear = data.length - regiYearCount["2022"];
 
 var highestValue = -Infinity;
 var activeSector = "",
@@ -59,7 +59,7 @@ export const statisticsCardsData = [
     color: "orange",
     icon: ChartBarIcon,
     title: "Registrations in 2022",
-    value: regiYearCount[22],
+    value: regiYearCount["2022"],
     footer: {
       color: diffChangeInYearPer >= 0 ? "text-green-500" : "text-red-500",
       value:

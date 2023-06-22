@@ -1095,7 +1095,7 @@ function findSocietyById(id) {
   return soc;
 }
 
-var regiYearCount = { 16: 0, 17: 0, 18: 0, 19: 0, 20: 0, 21: 0, 22: 0 };
+var regiYearCount = { "2016": 0, "2017": 0, "2018": 0, "2019": 0, "2020": 0, "2021": 0, "2022": 0 };
 var sectoralCount = {
   Credit: 0,
   Agro: 0,
@@ -1148,13 +1148,13 @@ var stateCount = {
 };
 
 data.map((entry) => {
-  if (entry["Date of Registration"]?.includes("2016")) regiYearCount[16]++;
-  if (entry["Date of Registration"]?.includes("2017")) regiYearCount[17]++;
-  if (entry["Date of Registration"]?.includes("2018")) regiYearCount[18]++;
-  if (entry["Date of Registration"]?.includes("2019")) regiYearCount[19]++;
-  if (entry["Date of Registration"]?.includes("2020")) regiYearCount[20]++;
-  if (entry["Date of Registration"]?.includes("2021")) regiYearCount[21]++;
-  if (entry["Date of Registration"]?.includes("2022")) regiYearCount[22]++;
+  if (entry["Date of Registration"]?.includes("2016")) regiYearCount["2016"]++;
+  if (entry["Date of Registration"]?.includes("2017")) regiYearCount["2017"]++;
+  if (entry["Date of Registration"]?.includes("2018")) regiYearCount["2018"]++;
+  if (entry["Date of Registration"]?.includes("2019")) regiYearCount["2019"]++;
+  if (entry["Date of Registration"]?.includes("2020")) regiYearCount["2020"]++;
+  if (entry["Date of Registration"]?.includes("2021")) regiYearCount["2021"]++;
+  if (entry["Date of Registration"]?.includes("2022")) regiYearCount["2022"]++;
 
   // if (sectoralCount.hasOwnProperty(entry["Sector Type"])) {
   //   sectoralCount[`${entry["Sector Type"]}`]++;

@@ -2,15 +2,13 @@ import randomColor from 'randomcolor';
 import { chartsConfig } from '@/configs';
 
 export const createLineChart = (chartData) => {
-    const categories = Object.keys(chartData);
-    const series = categories.map((cat) => chartData[cat]);
 
     const LineChart = {
         type: 'line',
         height: 400,
         series: [
             {
-                data: series,
+                data: Object.values(chartData),
             },
         ],
         options: {
@@ -18,13 +16,14 @@ export const createLineChart = (chartData) => {
             colors: ['#fff'],
             stroke: {
                 lineCap: 'round',
+                width: 2
             },
             markers: {
                 size: 5,
             },
             xaxis: {
                 ...chartsConfig.xaxis,
-                categories: categories.map((cat)=>cat.toString()) ,
+                categories: Object.keys(chartData),
             },
         },
     };
@@ -95,6 +94,7 @@ export const createPieChart = (chartdata) => {
 };
 
 export const createBarChart = (chartData) => {
+  console.log(chartData);
   const barChart = {
     type: 'bar',
     height: 400,
@@ -103,53 +103,29 @@ export const createBarChart = (chartData) => {
         data: Object.values(chartData),
       },
     ],
+    
     options: {
       ...chartsConfig,
       colors: '#fff',
       plotOptions: {
         bar: {
-          offsetY: -100,
-          columnWidth: '20%',
-          borderRadius: 2,
+          columnWidth: 30,
+          borderRadius: 5,
+          horizontal: false,
         },
       },
-      tooltip: {
-        enabled: false,
-      },
-      xaxis: {
+            xaxis: {
         ...chartsConfig.xaxis,
-        labels: { style: { fontSize: 10, colors: 'white' } },
         categories: Object.keys(chartData),
+        labels: { style: { fontSize: 12, colors: 'white' } },
       },
-      // annotations: {
-      //   points: Object.keys(chartData).map((key) => ({
-      //     x: key,
-      //     y: chartData[key],
-      //     marker: {
-      //       size: 4,
-      //       fillColor: '#fff',
-      //       strokeColor: '#333',
-      //       strokeWidth: 2,
-      //     },
-      //     label: {
-      //       text: chartData[key].toString(),
-      //       offsetY: -2,
-      //       style: {
-      //         fontSize: '12px',
-      //         fontWeight: 'bold',
-      //         color: '#333',
-      //       },
-      //     },
-      //   })),
-      // },
     },
   };
 
   const BarChartData ={
         chart: barChart,
     }
-  
-
+    console.log(barChart)
   return BarChartData;
 };
 
@@ -168,7 +144,6 @@ export const createHorBarChart = (chartData) => {
       colors: '#fff',
       plotOptions: {
         bar: {
-          offsetY: -100,
           columnWidth: '20%',
           borderRadius: 5,
           horizontal: true,
