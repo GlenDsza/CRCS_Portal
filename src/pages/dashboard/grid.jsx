@@ -190,7 +190,6 @@ export function Grid() {
                 </MenuHandler>
                 <MenuList>
                   <MenuItem onClick={convertToCSV}>Export to CSV</MenuItem>
-                  <MenuItem >Export to Excel</MenuItem>
                   <MenuItem onClick={convertToPDF}>Export to PDF</MenuItem>
                 </MenuList>
               </Menu>
