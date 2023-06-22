@@ -101,10 +101,10 @@ export function DashboardNavbar() {
         className="p-1 font-medium text-blue-gray-500"
       >
         <a
-          href="#"
+          href="https://github.com/GlenDsza/CRCS_Portal"
           className="flex items-center transition-colors hover:text-blue-500"
         >
-          Application
+          View Source Code
         </a>
       </Typography>
     </ul>
