@@ -129,12 +129,12 @@ export function Configurator() {
               color="blue-gray"
               className="p-1 font-medium text-blue-gray-500"
             >
-              <Link
-                to="/"
+              <a
+                href="https://github.com/GlenDsza/CRCS_Portal"
                 className="flex items-center transition-colors hover:text-blue-500"
               >
-                Application
-              </Link>
+                View source-code
+              </a>
             </Typography>
           </li>
         </ul>
