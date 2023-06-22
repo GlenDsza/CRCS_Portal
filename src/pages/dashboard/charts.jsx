@@ -1,40 +1,28 @@
 import {
     Card,
-    CardHeader,
     CardBody,
-    CardFooter,
-    Typography,
-    Button,
-    Radio,
-  List,
-  ListItem,
-  ListItemPrefix
 } from "@material-tailwind/react";
 import "ag-grid-community/styles/ag-grid.css"; // Core grid CSS, always needed
 import "ag-grid-community/styles/ag-theme-alpine.css"; // Optional theme CSS
 import "ag-grid-community/styles/ag-theme-material.css"; // Optional theme CSS
 import Chart from "react-apexcharts";
-import React, { useCallback, useMemo, useRef, useState } from "react";
+import React, { useState } from "react";
 import {
     regiYearCount,
     sectoralCount,
     stateCount,
     monthCount,
 } from "@/data/og-data";
-import { useNavigate, useParams } from "react-router-dom";
-import { StatisticsChart } from "@/widgets/charts";
-import { statisticsCardsData, statisticsChartsData } from "@/data";
+import { useParams } from "react-router-dom";
 import { createLineChart, createPieChart, createBarChart, createHorBarChart } from '@/data/chartFunctions';
 
 
 export function Charts() {
     
-
     const params = useParams();
     const title = params.title;
     var defaultChartType,chartData, chartVar, chartColor;
     
-     
     switch (title) {
         case 'year':
             defaultChartType = 'line';
@@ -73,7 +61,6 @@ export function Charts() {
             chartVar = createHorBarChart(chartData);
             break;            
     }
-   console.log(chartVar);
     return (
         <div className="z-0 mt-5">
             <div className="mb-18 h-100 grid grid-cols-1 gap-y-12 gap-x-6 md:grid-cols-1">

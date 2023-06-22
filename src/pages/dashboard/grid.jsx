@@ -3,7 +3,6 @@ import Papa from 'papaparse';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 import {
-  Button,
   Card,
   CardBody,
   CardHeader,
@@ -16,7 +15,6 @@ import {
   Typography,
 } from "@material-tailwind/react";
 import {
-  ArrowDownTrayIcon,
   EllipsisVerticalIcon,
   HomeModernIcon,
 } from "@heroicons/react/24/solid";
@@ -31,7 +29,7 @@ import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 
 function parseDate(dateString) {
   if (!dateString) {
-    return null; // Return null or any default value if the date is empty
+    return 'ㅤㅤ-ㅤㅤ'; // Return null or any default value if the date is empty
   }
   const [day, month, year] = dateString.split("/");
   const formattedDate = `${year}/${month}/${day}`;

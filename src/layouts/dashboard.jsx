@@ -4,10 +4,8 @@ import { IconButton } from "@material-tailwind/react";
 import { useState, useEffect } from "react";
 import { DashboardNavbar, Configurator, Footer } from "@/widgets/layout";
 import routes from "@/routes";
-import { useMaterialTailwindController } from "@/context";
 
 export function Dashboard() {
-  const [controller, dispatch] = useMaterialTailwindController();
   const [scrollTopVisible, setScrollTopVisible] = useState(false);
 
   const handleScroll = () => {

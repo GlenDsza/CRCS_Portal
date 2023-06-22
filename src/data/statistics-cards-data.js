@@ -64,9 +64,9 @@ export const statisticsCardsData = [
       color: diffChangeInYearPer >= 0 ? "text-green-500" : "text-red-500",
       value:
         diffChangeInYearPer >= 0
-          ? `+${diffChangeInYearPer.toFixed(0)}%`
-          : `-${diffChangeInYearPer.toFixed(0)}%`,
-      label: ` registrations than last year`,
+          ? `${diffChangeInYearPer.toFixed(0)}%`
+          : `${diffChangeInYearPer.toFixed(0)}%`,
+      label: ` increase in registrations than last year`,
     },
   },
   {

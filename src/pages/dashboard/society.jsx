@@ -1,23 +1,10 @@
 import { MapContainer } from "@/widgets/layout";
 import {
-  EllipsisVerticalIcon,
-  HomeModernIcon,
-  MagnifyingGlassIcon,
-} from "@heroicons/react/24/solid";
-import {
   Card,
   CardBody,
-  CardHeader,
-  IconButton,
-  Input,
-  Menu,
-  MenuHandler,
-  MenuItem,
-  MenuList,
-  Typography,
 } from "@material-tailwind/react";
 import { findSocietyById } from "../../data/og-data";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 

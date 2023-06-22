@@ -1,6 +1,6 @@
 import { React, useState } from "react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import { useLocation, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
 import {
   IconButton,
@@ -13,7 +13,7 @@ import {
 
 export function Configurator() {
   const [controller, dispatch] = useMaterialTailwindController();
-  const { openConfigurator, sidenavColor, sidenavType, fixedNavbar } =
+  const { openConfigurator } =
     controller;
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
