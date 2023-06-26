@@ -1,7 +1,7 @@
 import { data } from "../../data/og-data";
-import Papa from 'papaparse';
-import jsPDF from 'jspdf';
-import 'jspdf-autotable';
+import Papa from "papaparse";
+import jsPDF from "jspdf";
+import "jspdf-autotable";
 import {
   Card,
   CardBody,
@@ -26,10 +26,9 @@ import React, { useCallback, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 
-
 function parseDate(dateString) {
   if (!dateString) {
-    return 'ㅤㅤ-ㅤㅤ'; // Return null or any default value if the date is empty
+    return "ㅤㅤ-ㅤㅤ"; // Return null or any default value if the date is empty
   }
   const [day, month, year] = dateString.split("/");
   const formattedDate = `${year}/${month}/${day}`;
@@ -37,7 +36,6 @@ function parseDate(dateString) {
 }
 
 export function Grid() {
-
   const parsedResults = data.map((item) => ({
     ...item,
     "Date of Registration": parseDate(item["Date of Registration"]),
@@ -55,14 +53,18 @@ export function Grid() {
       filter: true,
       hide: window.innerWidth >= 800 ? false : true,
     },
-    { field: "Date of Registration", filter: true, maxWidth: 200, cellDataType: 'dateS' },
+    {
+      field: "Date of Registration",
+      filter: true,
+      maxWidth: 200,
+      cellDataType: "dateS",
+    },
     { field: "Sector Type", filter: true, maxWidth: 150 },
   ]);
   const defaultColDef = useMemo(() => ({
     sortable: true,
     resizable: true,
   }));
-
 
   // Cell click event
   const cellClickedListener = useCallback((event) => {
@@ -78,7 +80,6 @@ export function Grid() {
     setRowData(filteredResults);
   };
 
-
   // Searching handler
   const handleSearch = () => {
     const searchResults = data.filter((item) =>
@@ -93,28 +94,37 @@ export function Grid() {
     }
   };
 
-
   // Convert and saving into csv file
   const convertToCSV = () => {
     const csv = Papa.unparse(filteredResults);
-    const csvData = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const csvData = new Blob([csv], { type: "text/csv;charset=utf-8;" });
     const csvURL = URL.createObjectURL(csvData);
-    const downloadLink = document.createElement('a');
+    const downloadLink = document.createElement("a");
     downloadLink.href = csvURL;
-    downloadLink.setAttribute('download', 'data.csv');
+    downloadLink.setAttribute("download", "data.csv");
     document.body.appendChild(downloadLink);
     downloadLink.click();
   };
 
   // COnvert into excel format and download it
 
-
   // Convert into pdf and save it
   const convertToPDF = () => {
     const doc = new jsPDF();
     const tableColumnWidths = [10, 30, 30, 20, 20, 20, 20, 20]; // Adjust the column widths as needed
-    const columnOrder = ['SrNo', 'Name of Society', 'Address','State','District','Area of Operation','Sector Type','Date of Registration'];
-    const tableData = filteredResults.map((item) => columnOrder.map((column) => item[column]));
+    const columnOrder = [
+      "SrNo",
+      "Name of Society",
+      "Address",
+      "State",
+      "District",
+      "Area of Operation",
+      "Sector Type",
+      "Date of Registration",
+    ];
+    const tableData = filteredResults.map((item) =>
+      columnOrder.map((column) => item[column])
+    );
 
     doc.autoTable({
       head: [columnOrder],
@@ -131,15 +141,12 @@ export function Grid() {
         7: { cellWidth: tableColumnWidths[7] },
       },
     });
-    const pdfDataUri = doc.output('datauristring');
-    const downloadLink = document.createElement('a');
+    const pdfDataUri = doc.output("datauristring");
+    const downloadLink = document.createElement("a");
     downloadLink.href = pdfDataUri;
-    downloadLink.download = 'data.pdf';
+    downloadLink.download = "data.pdf";
     downloadLink.click();
   };
-
-
-
 
   return (
     <div className="z-0 mt-6">
@@ -151,7 +158,7 @@ export function Grid() {
             color="transparent"
             className="m-0 flex flex-wrap items-center justify-between p-6"
           >
-            <div className="order-1 flex align-baseline">
+            <div className="relative order-1 flex w-max align-baseline">
               <HomeModernIcon
                 width={window.innerWidth < 500 ? 35 : 40}
                 height={window.innerWidth < 500 ? 35 : 40}
@@ -161,17 +168,30 @@ export function Grid() {
               <Typography
                 variant="h4"
                 color="blue-gray"
-                className="ml-3 mt-2 text-lg sm:text-xl md:text-2xl"
+                className="w-100 ml-3 mt-2 text-lg sm:text-xl md:text-2xl"
               >
                 Registered Societies
               </Typography>
+              <Typography
+                variant="h6"
+                color="blue-gray"
+                className="absolute top-8 ml-3 mt-2 text-sm font-light"
+                style={{ fontSize: "11px" }}
+              >
+                Click on society to view more details
+              </Typography>
             </div>
-            <div className="order-3 ml-auto mr-3 mt-4 flex w-full shrink-0 gap-2 md:order-2 md:mt-0 md:w-max">
+            <div className="order-3 ml-auto mr-3 mt-5 flex w-full shrink-0 gap-2 md:order-2 md:mt-0 md:w-max">
               <div className="w-full md:w-72">
                 <Input
                   onChange={(e) => setSearchQuery(e.target.value)}
                   label="Search by Society Name"
-                  icon={<MagnifyingGlassIcon onClick={handleSearch} className="h-5 w-5 cursor-pointer" />}
+                  icon={
+                    <MagnifyingGlassIcon
+                      onClick={handleSearch}
+                      className="h-5 w-5 cursor-pointer"
+                    />
+                  }
                 />
               </div>
             </div>

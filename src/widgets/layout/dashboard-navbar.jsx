@@ -10,10 +10,7 @@ import {
   Bars3Icon,
   ChevronDownIcon,
 } from "@heroicons/react/24/solid";
-import {
-  useMaterialTailwindController,
-  setOpenConfigurator,
-} from "@/context";
+import { useMaterialTailwindController, setOpenConfigurator } from "@/context";
 import { useState } from "react";
 
 export function DashboardNavbar() {
@@ -85,7 +82,7 @@ export function DashboardNavbar() {
           <li>
             <a
               href="#"
-              className="block px-4 py-2 text-xxs text-blue-gray-500 hover:bg-blue-gray-100"
+              className="text-xxs block px-4 py-2 text-blue-gray-500 hover:bg-blue-gray-100"
             >
               Form II
             </a>
@@ -142,14 +139,6 @@ export function DashboardNavbar() {
           </div>
           <div className="flex items-center">
             <div className="hidden lg:block">{navList}</div>
-            <IconButton
-              variant="text"
-              className="ml-5 hidden md:block"
-              color="blue-gray"
-              onClick={() => null}
-            >
-              <Cog6ToothIcon className="h-5 w-5 text-blue-gray-500" />
-            </IconButton>
             <IconButton
               variant="text"
               color="blue-gray"

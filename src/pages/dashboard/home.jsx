@@ -46,7 +46,7 @@ export function Home() {
           />
         ))}
       </div>
-      <div className=" flex justify-center">
+      <div className=" mb-10 flex justify-center">
         <Link to="/dashboard/data">
           <Button variant="outlined" ripple={true} className="w-[75vw]">
             View all registered Societies
@@ -58,4 +58,3 @@ export function Home() {
 }
 
 export default Home;
- 
